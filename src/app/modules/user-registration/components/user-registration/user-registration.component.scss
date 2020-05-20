@@ -1,0 +1,25 @@
+.user-registration {
+  background: white;
+  &__dropdown {
+    background-color: ghostwhite;
+
+    &__label {
+      width: 100%;
+      text-align: left;
+    }
+  }
+
+  &__required {
+    color: red;
+    margin-left: inherit;
+  }
+}
+
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-control {
+  background-color: ghostwhite;
+  border: none;
+}

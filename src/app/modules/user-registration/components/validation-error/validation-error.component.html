@@ -1,0 +1,32 @@
+<div
+  *ngIf="control.invalid && (control.dirty || control.touched)"
+  class="alert alert-danger"
+>
+
+  <div *ngIf="control.errors.required">
+    This field is required.
+  </div>
+
+  <ng-container *ngIf="control.errors.pattern">
+    <div *ngIf="fieldName === 'firstName' || fieldName === 'lastName'">
+      First Name and Last Name should be letters only.
+    </div>
+
+    <div *ngIf="fieldName === 'phone'">
+      Phone Number should be a 11 digit numbers.
+    </div>
+
+    <div *ngIf="fieldName === 'password'">
+      Password must be alphanumeric and at least 8 characters long.
+    </div>
+  </ng-container>
+
+  <div *ngIf="control.errors.email">
+    Enter a valid email.
+  </div>
+
+  <div *ngIf="control.errors.emailMatch">
+    Email does not match.
+  </div>
+
+</div>
