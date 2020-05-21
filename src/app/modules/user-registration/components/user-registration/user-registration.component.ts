@@ -76,7 +76,7 @@ export class UserRegistrationComponent implements OnInit, OnDestroy {
         return EMPTY;
       }),
       finalize(() => this.isSpinner = false),
-      switchMap(() => this.userService.login().pipe(
+      switchMap((data) => this.userService.login(data).pipe(
           catchError(() => {
             const { id, email } = this.userService.user.getValue();
             this.displayModal(`The user with ID ${id} and email ${email} cannot be logged in`);

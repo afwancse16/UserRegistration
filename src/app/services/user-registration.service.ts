@@ -10,11 +10,6 @@ export class UserRegistrationService {
   public user: BehaviorSubject<IUserData> = new BehaviorSubject(null);
   public user$: Observable<IUserData> = this.user.asObservable();
 
-  public dummyUserCredentials = {
-    email: 'eve.holt@reqres.in',
-    password: 'cityslicka'
-  };
-
   constructor(
     private http: HttpClient,
     private config: ConfigService
@@ -30,7 +25,10 @@ export class UserRegistrationService {
     );
   }
 
-  public login(): Observable<any> {
-    return this.http.post(`${this.config.apiUrl}login`, this.dummyUserCredentials);
+  public login(user): Observable<any> {
+    return this.http.post(`${this.config.apiUrl}login`, {
+      email: 'eve.holt@reqres.in',
+      password: user.password
+    });
   }
 }
