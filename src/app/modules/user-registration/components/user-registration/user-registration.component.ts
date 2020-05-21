@@ -6,6 +6,7 @@ import { ErrorModalComponent } from '../error-modal/error-modal.component';
 import { UserRegistrationService } from '../../../../services/user-registration.service';
 import { catchError, switchMap, takeUntil, finalize } from 'rxjs/operators';
 import { EMPTY, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-registration',
@@ -25,7 +26,8 @@ export class UserRegistrationComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private modalService: NgbModal,
-    private userService: UserRegistrationService
+    private userService: UserRegistrationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -83,7 +85,7 @@ export class UserRegistrationComponent implements OnInit, OnDestroy {
         )
       )
     )
-    .subscribe();
+    .subscribe(() => this.router.navigate(['/usersummary']));
   }
 
   public displayModal(msg: string) {

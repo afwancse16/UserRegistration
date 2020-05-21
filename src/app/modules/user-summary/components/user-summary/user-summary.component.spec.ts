@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ValidationErrorComponent } from './validation-error.component';
+import { UserSummaryComponent } from './user-summary.component';
 
-describe('ValidationErrorComponent', () => {
-  let component: ValidationErrorComponent;
-  let fixture: ComponentFixture<ValidationErrorComponent>;
+describe('UserSummaryComponent', () => {
+  let component: UserSummaryComponent;
+  let fixture: ComponentFixture<UserSummaryComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ValidationErrorComponent ]
+      declarations: [ UserSummaryComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ValidationErrorComponent);
+    fixture = TestBed.createComponent(UserSummaryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

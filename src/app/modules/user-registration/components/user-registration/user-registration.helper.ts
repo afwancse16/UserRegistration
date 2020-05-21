@@ -4,7 +4,7 @@ export const NAME_PATTERN = '^[a-zA-Z ]*$';
 
 export const PHONE_PATTERN = '[0-9 ]{10}';
 
-export const PASSWORD_PATTERN = '[a-zA-Z0-9]{8,}';
+export const PASSWORD_PATTERN = '(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,})';
 
 export const EXISTING_EMAILS = [
   'anc@abc.com',

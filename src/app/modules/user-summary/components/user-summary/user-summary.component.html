@@ -1,0 +1,42 @@
+<div class="container mt-4 p-4">
+  <div class="card">
+    <div class="card-header">
+      User Summary
+    </div>
+
+    <div *ngIf="(userData$ | async) as user" class="card-body">
+      <div class="row">
+          <div class="col-2 display-label">Name</div>
+          <div class="col-10">
+            <p>{{user.title}} {{user.firstName}} {{user.lastName}}</p>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2 display-label">Phone</div>
+        <div class="col-10">
+          <p>{{user.phone}}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2 display-label">Email</div>
+        <div class="col-10">
+          <p>{{user.email}}</p>
+        </div>
+      </div>
+
+      <div class="row">
+          <div class="col-2 display-label">Date of birth</div>
+          <div class="col-10">
+            <p>{{user.dob}}</p>
+          </div>
+        </div>
+    </div>
+
+    <div *ngIf="!(userData$ | async)" class="card-body">
+      <p>No user found. Please <a href="/signup">sign up.</a></p>
+    </div>
+
+  </div>
+</div>
