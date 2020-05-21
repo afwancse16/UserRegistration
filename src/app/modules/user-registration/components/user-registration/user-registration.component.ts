@@ -4,7 +4,7 @@ import { PHONE_PATTERN, NAME_PATTERN, MatchEmail, PASSWORD_PATTERN, EXISTING_EMA
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorModalComponent } from '../error-modal/error-modal.component';
 import { UserRegistrationService } from '../../../../services/user-registration.service';
-import { catchError, switchMap, takeUntil, finalize } from 'rxjs/operators';
+import { catchError, switchMap, takeUntil, finalize, tap } from 'rxjs/operators';
 import { EMPTY, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -50,6 +50,13 @@ export class UserRegistrationComponent implements OnInit, OnDestroy {
       phone: ['', [Validators.required, , Validators.pattern(PHONE_PATTERN)]],
       password: ['', [Validators.required, Validators.pattern(PASSWORD_PATTERN)]]
     });
+
+    this.getFormControl('email').valueChanges
+    .pipe(
+      takeUntil(this.isAlive$),
+      tap(() => this.getFormControl('confirmEmail').updateValueAndValidity())
+    )
+    .subscribe();
   }
 
   public onTitleChange = (item) => this.signupForm.get('title').setValue(item.name);
